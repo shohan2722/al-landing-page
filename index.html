@@ -1,0 +1,820 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Alexis Lauren — Luxury Medspa & Beauty Collective · Coral Gables, Miami</title>
+<meta name="description" content="Personalized aesthetic treatments and medical-grade skincare in Miami's most intentional luxury medspa. Refine. Don't replace. Book your complimentary consultation." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ─── Alexis Lauren brand tokens (brand brief overrides default) ─── */
+  :root{
+    --bg:        #FBF8F4;   /* warm off-white page */
+    --bg-2:      #F8F3ED;   /* soft cream block */
+    --beige:     #D8C4AE;   /* champagne nude */
+    --beige-2:   #CDB79E;   /* deeper champagne */
+    --surface:   #FFFFFF;
+    --espresso:  #3A2D27;   /* primary CTA / deep accent */
+    --espresso-2:#4A3A32;   /* hover */
+    --fg:        #2E2520;   /* warm ink */
+    --muted:     #7A6A5E;   /* warm muted text */
+    --border:    #E7DCCD;   /* warm hairline */
+    --ivory:     #FBF8F4;
+    --blush:     #EFE2DA;
+
+    --font-display: 'Cormorant Garamond', 'Iowan Old Style', Georgia, serif;
+    --font-body:    'Jost', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+
+    --maxw: 1200px;
+    --gutter: clamp(20px, 5vw, 56px);
+    --sec-y: clamp(56px, 9vw, 110px);
+    --radius: 4px;
+    --ease: cubic-bezier(.22,.61,.36,1);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-family:var(--font-body);
+    font-weight:400;
+    font-size:17px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+
+  h1,h2,h3,h4{
+    font-family:var(--font-display);
+    font-weight:500;
+    line-height:1.12;
+    letter-spacing:.005em;
+    margin:0;
+  }
+  h2{font-size:clamp(30px,4.6vw,52px);}
+  h3{font-size:clamp(22px,2.6vw,30px);}
+  p{margin:0 0 1.1em;}
+  .em{font-style:italic;}
+
+  .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter);}
+  .wrap-narrow{max-width:820px;margin-inline:auto;padding-inline:var(--gutter);}
+  section{padding-block:var(--sec-y);}
+
+  .eyebrow{
+    font-family:var(--font-body);
+    font-weight:500;
+    font-size:12.5px;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--beige-2);
+    margin:0 0 18px;
+  }
+  .lead{font-size:clamp(18px,2vw,21px);color:var(--muted);line-height:1.75;}
+
+  /* ─── Buttons ─── */
+  .btn{
+    display:inline-flex;align-items:center;gap:.6em;
+    font-family:var(--font-body);font-weight:500;font-size:15px;
+    letter-spacing:.04em;
+    padding:17px 34px;min-height:54px;
+    border-radius:var(--radius);
+    border:1.5px solid transparent;
+    cursor:pointer;transition:all .3s var(--ease);
+    line-height:1;
+  }
+  .btn-primary{background:var(--espresso);color:var(--ivory);}
+  .btn-primary:hover{background:var(--espresso-2);transform:translateY(-2px);box-shadow:0 12px 28px rgba(58,45,39,.22);}
+  .btn-ghost{background:transparent;color:var(--espresso);border-color:var(--espresso);}
+  .btn-ghost:hover{background:var(--espresso);color:var(--ivory);}
+  .btn-light{background:var(--ivory);color:var(--espresso);}
+  .btn-light:hover{background:var(--beige);transform:translateY(-2px);}
+  .btn-outline-light{background:transparent;color:var(--ivory);border-color:rgba(255,255,255,.55);}
+  .btn-outline-light:hover{background:rgba(255,255,255,.12);border-color:var(--ivory);}
+  .btn .arw{transition:transform .3s var(--ease);}
+  .btn:hover .arw{transform:translateX(4px);}
+
+  .textlink{color:var(--espresso);border-bottom:1px solid var(--beige-2);padding-bottom:1px;font-weight:500;transition:border-color .25s;}
+  .textlink:hover{border-color:var(--espresso);}
+
+  /* ─── Top nav ─── */
+  .nav{
+    position:sticky;top:0;z-index:60;
+    background:color-mix(in srgb,var(--bg) 88%,transparent);
+    backdrop-filter:saturate(150%) blur(12px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;height:84px;}
+  .brand{display:flex;align-items:center;gap:14px;}
+  .brand img{height:52px;width:auto;}
+  .brand .wordmark{font-family:var(--font-display);font-size:25px;font-weight:600;letter-spacing:.12em;color:var(--espresso);text-transform:uppercase;}
+  .nav-links{display:flex;align-items:center;gap:30px;}
+  .nav-links a{font-size:14px;letter-spacing:.04em;color:var(--muted);transition:color .2s;}
+  .nav-links a:hover{color:var(--espresso);}
+  .nav-cta{display:inline-flex;}
+  .nav-phone{font-size:14px;letter-spacing:.04em;color:var(--espresso);font-weight:500;}
+  .menu-btn{display:none;background:none;border:0;cursor:pointer;font-size:26px;color:var(--espresso);}
+
+  /* ─── Announcement bar ─── */
+  .announce{background:var(--espresso);color:var(--beige);text-align:center;font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;padding:11px 16px;}
+  .announce span{opacity:.92;}
+
+  /* ─── Hero ─── */
+  .hero{padding-block:clamp(40px,6vw,72px);}
+  .hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:clamp(32px,5vw,64px);align-items:center;}
+  .hero h1{font-size:clamp(40px,6.4vw,76px);line-height:1.04;color:var(--espresso);margin-bottom:24px;font-weight:500;}
+  .hero .sub{font-size:clamp(17px,1.6vw,19.5px);color:var(--muted);max-width:38ch;margin-bottom:26px;}
+  .hero-hook{border-left:2px solid var(--beige-2);padding-left:22px;font-family:var(--font-display);font-style:italic;font-size:clamp(18px,2vw,22px);color:var(--fg);line-height:1.5;margin-bottom:32px;}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
+  .hero-cta .quiz{font-size:14.5px;color:var(--muted);}
+  .hero-media{position:relative;}
+  .hero-media .main{border-radius:var(--radius);width:100%;aspect-ratio:4/4.4;object-fit:cover;box-shadow:0 30px 60px -28px rgba(58,45,39,.4);}
+  .hero-media .inset{position:absolute;bottom:-28px;left:-28px;width:42%;border-radius:var(--radius);border:6px solid var(--bg);box-shadow:0 18px 38px -18px rgba(58,45,39,.45);aspect-ratio:3/3.6;object-fit:cover;}
+
+  .trust{margin-top:clamp(44px,6vw,64px);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding-block:22px;}
+  .trust-row{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 38px;}
+  .trust-row li{list-style:none;display:flex;align-items:center;gap:9px;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+  .trust-row .dot{color:var(--beige-2);}
+  ul.trust-row{margin:0;padding:0;}
+
+  /* ─── generic blocks ─── */
+  .bg-cream{background:var(--bg-2);}
+  .bg-blush{background:var(--blush);}
+  .bg-beige{background:var(--beige);}
+  .center{text-align:center;}
+  .max-prose{max-width:60ch;}
+  .mt-cta{margin-top:34px;}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,68px);align-items:center;}
+  .split.reverse .media{order:2;}
+  .media img{border-radius:var(--radius);width:100%;object-fit:cover;}
+  .media.tall img{aspect-ratio:4/4.7;}
+  .media.wide img{aspect-ratio:5/3.6;}
+
+  /* ─── Opening hook ─── */
+  .hook .wrap-narrow{text-align:center;}
+  .hook p{font-size:clamp(17px,1.7vw,19px);color:var(--fg);}
+  .hook .opener{font-family:var(--font-display);font-size:clamp(15px,1.3vw,17px);letter-spacing:.05em;}
+
+  /* ─── Problem amplification (Q cards) ─── */
+  .qcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:clamp(26px,3vw,40px);margin-bottom:20px;}
+  .qcard .q{font-family:var(--font-display);font-style:italic;font-size:clamp(20px,2.2vw,26px);color:var(--espresso);margin-bottom:14px;line-height:1.3;}
+  .qcard p:last-child{margin-bottom:0;}
+
+  /* ─── Philosophy ─── */
+  .philo h2{color:var(--espresso);}
+  .philo .big{font-family:var(--font-display);font-size:clamp(26px,3.4vw,40px);font-style:italic;color:var(--espresso);line-height:1.2;margin-top:8px;}
+
+  /* ─── Differentiators ─── */
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;}
+  .feat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:34px 30px;transition:transform .3s var(--ease),box-shadow .3s var(--ease);}
+  .feat:hover{transform:translateY(-4px);box-shadow:0 22px 44px -28px rgba(58,45,39,.35);}
+  .feat .no{font-family:var(--font-display);font-size:30px;color:var(--beige-2);display:block;margin-bottom:14px;line-height:1;}
+  .feat h3{font-size:21px;color:var(--espresso);margin-bottom:12px;}
+  .feat p{font-size:15.5px;color:var(--muted);margin:0;line-height:1.65;}
+
+  /* ─── Steps ─── */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:48px;}
+  .step .num{font-family:var(--font-display);font-size:54px;color:var(--beige-2);line-height:1;display:block;margin-bottom:10px;}
+  .step h3{font-size:19px;color:var(--espresso);margin-bottom:10px;}
+  .step p{font-size:15px;color:var(--muted);margin:0;line-height:1.62;}
+  .steps-media{margin-top:50px;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:18px;}
+  .steps-media img{border-radius:var(--radius);width:100%;height:100%;object-fit:cover;aspect-ratio:4/3;}
+
+  /* ─── Service showcase ─── */
+  .serv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:48px;}
+  .serv{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s var(--ease),box-shadow .3s var(--ease);}
+  .serv:hover{transform:translateY(-4px);box-shadow:0 22px 44px -28px rgba(58,45,39,.35);}
+  .serv .ph{aspect-ratio:5/4;background:var(--blush);overflow:hidden;}
+  .serv .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease);}
+  .serv:hover .ph img{transform:scale(1.05);}
+  .serv .body{padding:22px 22px 26px;display:flex;flex-direction:column;gap:8px;flex:1;}
+  .serv h3{font-size:19px;color:var(--espresso);}
+  .serv p{font-size:14px;color:var(--muted);margin:0;line-height:1.6;}
+  .serv.text-only{background:var(--bg-2);}
+
+  /* ─── Is this for me ─── */
+  .checklist{list-style:none;margin:40px 0 0;padding:0;display:grid;gap:18px;}
+  .checklist li{display:flex;gap:16px;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px 26px;font-size:16px;color:var(--fg);line-height:1.6;}
+  .checklist .mk{color:var(--beige-2);font-size:20px;flex:none;line-height:1.5;}
+
+  /* ─── Testimonials ─── */
+  .testi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:46px;}
+  .testi{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:34px 32px;}
+  .testi .quote{font-family:var(--font-display);font-style:italic;font-size:19px;line-height:1.55;color:var(--fg);margin-bottom:18px;}
+  .testi .who{font-size:13px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;}
+  .stars{color:var(--beige-2);letter-spacing:.1em;font-size:15px;margin-bottom:14px;}
+  .rating-agg{text-align:center;margin-bottom:8px;font-size:14px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;}
+
+  /* ─── Gallery ─── */
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:46px;}
+  .ba{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+  .ba .img{aspect-ratio:4/3.4;overflow:hidden;}
+  .ba .img img{width:100%;height:100%;object-fit:cover;}
+  .ba .meta{padding:18px 22px 22px;}
+  .ba .meta .t{font-family:var(--font-display);font-size:20px;color:var(--espresso);margin-bottom:6px;}
+  .ba .meta .d{font-size:13.5px;color:var(--muted);line-height:1.5;}
+  .disclaimer{margin-top:30px;font-size:13.5px;color:var(--muted);max-width:70ch;}
+
+  /* ─── Vault (dark VIP) ─── */
+  .vault{background:var(--espresso);color:var(--ivory);position:relative;overflow:hidden;}
+  .vault::after{content:"";position:absolute;inset:0;background:url('assets/clinic-blush.png') center/cover;opacity:.10;mix-blend-mode:luminosity;}
+  .vault .wrap{position:relative;z-index:1;}
+  .vault .eyebrow{color:var(--beige);}
+  .vault h2{color:var(--ivory);}
+  .vault .sub{font-family:var(--font-display);font-style:italic;font-size:clamp(20px,2.4vw,28px);color:var(--beige);margin-top:6px;}
+  .vault p{color:rgba(251,248,244,.82);}
+  .vault .wish{font-family:var(--font-display);font-style:italic;font-size:clamp(24px,3vw,34px);color:var(--ivory);text-align:center;margin:6px 0 4px;}
+  .vault-perks{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:42px 0;}
+  .perk{border:1px solid rgba(216,196,174,.3);border-radius:var(--radius);padding:26px 24px;background:rgba(255,255,255,.03);}
+  .perk .mk{color:var(--beige);font-size:18px;margin-bottom:10px;}
+  .perk h3{color:var(--ivory);font-size:19px;margin-bottom:8px;}
+  .perk p{color:rgba(251,248,244,.75);font-size:14.5px;margin:0;line-height:1.6;}
+  .vault-math{border-top:1px solid rgba(216,196,174,.3);border-bottom:1px solid rgba(216,196,174,.3);padding-block:38px;margin-block:8px 36px;max-width:780px;margin-inline:auto;text-align:center;}
+  .vault-math .h{font-family:var(--font-display);font-size:26px;color:var(--beige);margin-bottom:18px;}
+
+  /* ─── Team / about ─── */
+  .founder-quote{font-family:var(--font-display);font-style:italic;font-size:clamp(22px,2.6vw,30px);color:var(--espresso);line-height:1.35;}
+  .about-block{margin-top:18px;}
+
+  /* ─── Not for you ─── */
+  .notfor{list-style:none;margin:40px 0 0;padding:0;display:grid;gap:18px;}
+  .notfor li{display:flex;gap:16px;align-items:flex-start;border-bottom:1px solid var(--border);padding-bottom:18px;font-size:16px;line-height:1.62;color:var(--fg);}
+  .notfor .mk{color:var(--beige-2);font-size:18px;flex:none;font-weight:600;}
+  .notfor b{color:var(--espresso);font-weight:500;}
+
+  /* ─── FAQ ─── */
+  .faq-group{margin-top:38px;}
+  .faq-cat{font-family:var(--font-body);font-size:12.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--beige-2);margin:34px 0 8px;}
+  .faq-cat:first-child{margin-top:0;}
+  .faq{border-bottom:1px solid var(--border);}
+  .faq summary{list-style:none;cursor:pointer;padding:22px 0;display:flex;justify-content:space-between;align-items:flex-start;gap:24px;font-family:var(--font-display);font-size:clamp(18px,2vw,22px);color:var(--espresso);transition:color .2s;}
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary:hover{color:var(--espresso-2);}
+  .faq summary .pl{flex:none;font-size:22px;color:var(--beige-2);transition:transform .3s var(--ease);line-height:1;}
+  .faq[open] summary .pl{transform:rotate(45deg);}
+  .faq .ans{padding:0 0 24px;color:var(--muted);font-size:16px;line-height:1.72;max-width:75ch;}
+
+  /* ─── Final social proof ─── */
+  .press{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;margin-top:36px;}
+  .press .badge{border:1px solid var(--border);border-radius:var(--radius);padding:18px 26px;background:var(--surface);font-family:var(--font-display);font-size:18px;color:var(--muted);letter-spacing:.04em;}
+  .ig-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:30px;}
+  .ig-strip img{aspect-ratio:1;object-fit:cover;border-radius:var(--radius);}
+
+  /* ─── Final CTA ─── */
+  .finalcta{position:relative;background:url('assets/hero-interior.png') center/cover;color:var(--ivory);text-align:center;}
+  .finalcta::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(58,45,39,.62),rgba(58,45,39,.74));}
+  .finalcta .wrap-narrow{position:relative;z-index:1;}
+  .finalcta h2{color:var(--ivory);font-size:clamp(32px,4.6vw,56px);}
+  .finalcta .lead{color:rgba(251,248,244,.9);}
+  .finalcta .ritual{font-family:var(--font-display);font-style:italic;font-size:clamp(20px,2.4vw,26px);color:var(--beige);margin:24px 0 30px;}
+  .finalcta .ctas{display:flex;flex-direction:column;align-items:center;gap:14px;}
+  .finalcta .note{font-size:14px;color:rgba(251,248,244,.7);}
+  .finalcta .tertiary{margin-top:8px;}
+
+  /* ─── Footer ─── */
+  footer{background:var(--espresso);color:var(--beige);padding-block:60px 38px;}
+  .foot-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:34px;align-items:flex-start;}
+  .foot-brand{display:flex;align-items:center;gap:16px;margin-bottom:14px;}
+  .foot-brand img{height:64px;width:auto;filter:brightness(0) invert(1);opacity:.95;}
+  .foot-brand .wordmark{font-family:var(--font-display);font-size:30px;letter-spacing:.14em;color:var(--ivory);text-transform:uppercase;font-weight:600;}
+  footer .tag{color:rgba(251,248,244,.7);font-size:14.5px;max-width:32ch;}
+  .foot-contact{font-size:15px;line-height:2;}
+  .foot-contact a:hover{color:var(--ivory);}
+  .foot-contact .lbl{display:block;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--beige-2);margin-bottom:4px;}
+  .foot-divider{height:1px;background:rgba(216,196,174,.25);margin:38px 0 22px;}
+  .foot-bot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;font-size:13px;color:rgba(251,248,244,.6);}
+
+  /* ─── Fade-in motion ─── */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+  .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
+
+  /* ─── Responsive ─── */
+  @media (max-width:1024px){
+    .feat-grid,.serv-grid,.steps{grid-template-columns:repeat(2,1fr);}
+    .vault-perks{grid-template-columns:repeat(2,1fr);}
+    .steps-media{grid-template-columns:1fr 1fr;}
+    .ig-strip{grid-template-columns:repeat(5,1fr);}
+  }
+  @media (max-width:860px){
+    .nav-links,.nav-cta,.nav-phone{display:none;}
+    .menu-btn{display:block;}
+    .nav.open .nav-links{display:flex;position:absolute;top:84px;left:0;right:0;flex-direction:column;background:var(--bg);border-bottom:1px solid var(--border);padding:18px var(--gutter);gap:16px;}
+    .nav.open .nav-cta{display:inline-flex;}
+    .hero-grid{grid-template-columns:1fr;gap:48px;}
+    .hero-media{margin-top:8px;}
+    .hero-media .inset{width:38%;left:auto;right:-14px;bottom:-20px;}
+    .split,.split.reverse{grid-template-columns:1fr;}
+    .split.reverse .media{order:0;}
+    .gallery,.testi-grid{grid-template-columns:1fr;}
+    .feat-grid,.serv-grid,.steps,.vault-perks{grid-template-columns:1fr;}
+    .steps-media{grid-template-columns:1fr;}
+  }
+  @media (max-width:480px){
+    .ig-strip{grid-template-columns:repeat(3,1fr);}
+    .btn{width:100%;justify-content:center;}
+    .hero-cta{flex-direction:column;align-items:stretch;}
+    .hero-cta .quiz{text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ░░ ANNOUNCEMENT BAR ░░ -->
+<div class="announce"><span>&#10022;&nbsp; Complimentary Consultations Available — Limited Appointments This Month &nbsp;&#10022;</span></div>
+
+<!-- ░░ NAV ░░ -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="Alexis Lauren home">
+      <img src="assets/logo.avif" alt="Alexis Lauren logo" />
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#philosophy">Philosophy</a>
+      <a href="#treatments">Treatments</a>
+      <a href="#vault">The Vault</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="nav-phone" href="tel:+13056863393">(305) 686-3393</a>
+    <a class="btn btn-primary nav-cta" href="#book">Book Consultation</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">&#9776;</button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ░░ 1. HERO ░░ -->
+<section class="hero" data-od-id="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="reveal">
+        <p class="eyebrow">Luxury Medspa &amp; Beauty Collective · Coral Gables</p>
+        <h1>You Should Look Refreshed.<br>Not Different.</h1>
+        <p class="sub">Personalized aesthetic treatments and medical-grade skincare in Miami's most intentional luxury medspa — where expert guidance meets elevated self-care, and every result is designed to look quietly, unmistakably <span class="em">you.</span></p>
+        <p class="hero-hook">If you've ever looked at someone and thought, &ldquo;She looks amazing — what is she doing?&rdquo; — that is the Alexis Lauren result. Not a look that announces itself. A look that simply can't be explained.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#book">Book My Complimentary Consultation <span class="arw">&rarr;</span></a>
+          <span class="quiz">Or explore your personalized ritual <a class="textlink" href="#book">Take the 3-Minute Ritual Quiz</a></span>
+        </div>
+      </div>
+      <div class="hero-media reveal">
+        <img class="main" src="assets/hero-interior.png" alt="Bright, calm interior of the Alexis Lauren medspa" />
+        <img class="inset" src="assets/clinic-shelf.png" alt="Curved product shelf at Alexis Lauren" />
+      </div>
+    </div>
+
+    <!-- TRUST SIGNALS -->
+    <div class="trust reveal">
+      <ul class="trust-row">
+        <li><span class="dot">&#10022;</span> Medical-Grade Treatments</li>
+        <li><span class="dot">&#10022;</span> Expert Certified Providers</li>
+        <li><span class="dot">&#10022;</span> Personalized Treatment Planning</li>
+        <li><span class="dot">&#10022;</span> Luxury Hospitality Experience</li>
+        <li><span class="dot">&#10022;</span> Natural-Looking Results Guaranteed</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ 2. OPENING HOOK / CURIOSITY AMPLIFIER ░░ -->
+<section class="hook bg-cream" data-od-id="hook">
+  <div class="wrap-narrow reveal">
+    <p class="eyebrow center">The Difference</p>
+    <h2 class="center">There's a Difference Between Going to a Medspa<br>and Going to <span class="em">Alexis Lauren.</span></h2>
+    <div style="height:28px"></div>
+    <p>Most medspas will hand you a menu of services.</p>
+    <p>They'll tell you what's popular, quote you a price, and schedule your appointment before you've even had a chance to breathe.</p>
+    <p>You'll leave either overwhelmed by the options, or worse — booked into a treatment that wasn't quite right for you.</p>
+    <p>At Alexis Lauren, we do something different.</p>
+    <p>We take the time to understand what you're actually trying to achieve — the way you want to feel when you look in the mirror, the results that would genuinely make a difference, the experience that would make this feel like self-care instead of a clinical transaction.</p>
+    <p>Then, and only then, do we curate a treatment plan that's built specifically around you.</p>
+    <p class="founder-quote" style="text-align:center;margin:34px 0;">No guesswork. No generic protocols. No pressure.</p>
+    <p style="margin-bottom:0;">Just personalized, expert-guided aesthetics — in one of the most beautiful, calming medspa environments in South Florida.</p>
+  </div>
+</section>
+
+<!-- ░░ 3. PROBLEM AMPLIFICATION ░░ -->
+<section class="bg-blush" data-od-id="problem">
+  <div class="wrap">
+    <div class="split">
+      <div class="reveal">
+        <p class="eyebrow">We Hear You</p>
+        <h2>We Understand Why You've Been Hesitating.</h2>
+        <p class="lead" style="margin-top:18px;">The aesthetic world has made this more complicated than it needs to be. You've probably asked yourself at least one of these questions:</p>
+        <div class="media tall" style="margin-top:26px;">
+          <img src="assets/result-1.jpg" alt="Refined, natural aesthetic result" loading="lazy" />
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="qcard">
+          <p class="q">&ldquo;There are so many treatments — Botox, filler, lasers, facials, microneedling, peels, Sculptra. How do I even know what I actually need?&rdquo;</p>
+          <p>You're not supposed to know. That's our job. The number of options available today is genuinely overwhelming — even for people who have had treatments before. What you need isn't a longer menu. You need an expert who will listen to your goals and build a plan around them.</p>
+        </div>
+        <div class="qcard">
+          <p class="q">&ldquo;What if I end up looking overdone, or frozen, or too 'done'?&rdquo;</p>
+          <p>This is the fear we hear most often — and it's completely valid. The aesthetic industry has a reputation problem, and it's earned. Results that look artificial aren't just a cosmetic failure — they undermine your confidence instead of building it. Our entire philosophy is built around the opposite of that.</p>
+        </div>
+        <div class="qcard">
+          <p class="q">&ldquo;I've been to medspas before and it felt rushed and impersonal. I don't want to go through that again.&rdquo;</p>
+          <p>That experience — the clinical waiting room, the 10-minute consult, the feeling that you're being processed rather than cared for — is unfortunately common. It's also the reason Alexis Lauren exists. This is not that.</p>
+        </div>
+      </div>
+    </div>
+    <p class="reveal" style="margin-top:42px;max-width:78ch;font-size:18px;">Whatever has kept you from moving forward — the uncertainty, the fear, the past experiences — we want you to know that we've built every part of this practice specifically for someone who feels exactly the way you feel right now.</p>
+  </div>
+</section>
+
+<!-- ░░ 4. BRAND POSITIONING / PHILOSOPHY BRIDGE ░░ -->
+<section class="philo" id="philosophy" data-od-id="philosophy">
+  <div class="wrap">
+    <div class="split reverse">
+      <div class="media tall reveal">
+        <img src="assets/clinic-blush.png" alt="Warm, blush-toned Alexis Lauren interior" loading="lazy" />
+      </div>
+      <div class="reveal">
+        <p class="eyebrow">Our Philosophy</p>
+        <h2>Refine. Don't Replace.</h2>
+        <p class="big">The most beautiful results are the ones people can't quite pinpoint.</p>
+        <div style="height:18px"></div>
+        <p>Our approach isn't about transformation in the dramatic, before-and-after sense. It's about refinement — thoughtful, precise, personalized enhancements that bring out what's already uniquely yours.</p>
+        <p>We believe that the most beautiful results are the ones that people can't quite pinpoint. They just know you look incredible.</p>
+        <p>That belief informs everything we do here — from the treatments we recommend, to the way our providers work, to the environment we've created for you to experience it in.</p>
+        <p class="founder-quote" style="margin-top:22px;">At Alexis Lauren, beauty is a ritual, not a procedure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ 5. WHAT SETS US APART ░░ -->
+<section class="bg-cream" data-od-id="differentiators">
+  <div class="wrap">
+    <div class="center reveal" style="max-width:62ch;margin-inline:auto;">
+      <p class="eyebrow">What Sets Us Apart</p>
+      <h2>What Makes the Alexis Lauren Experience Different</h2>
+    </div>
+    <div class="feat-grid">
+      <div class="feat reveal"><span class="no">01</span><h3>Personalized Treatment Planning</h3><p>Every client receives a curated treatment plan built around their specific goals — not a generic protocol. We begin with an in-depth consultation before we ever recommend a treatment.</p></div>
+      <div class="feat reveal"><span class="no">02</span><h3>Natural-Looking Results as a Standard</h3><p>Our providers specialize in subtle enhancement — techniques that soften, balance, and refresh without erasing character. You'll look like yourself. Only better rested, more radiant, more refined.</p></div>
+      <div class="feat reveal"><span class="no">03</span><h3>Medical-Grade Treatments in a Luxury Environment</h3><p>You shouldn't have to choose between clinical quality and a beautiful experience. We combine the two — medical-grade efficacy in a space designed to feel like your most elevated form of self-care.</p></div>
+      <div class="feat reveal"><span class="no">04</span><h3>Expert Guidance, Not Sales Pressure</h3><p>We will never recommend a treatment you don't need. Our consultation is built on transparency — we'll tell you exactly what will serve your goals, and what can wait. You'll leave with clarity, not confusion.</p></div>
+      <div class="feat reveal"><span class="no">05</span><h3>A Self-Care Experience That Honors Your Time</h3><p>From your first inquiry to your post-treatment follow-up, every touchpoint at Alexis Lauren is designed to feel seamless, attentive, and worthy of your investment.</p></div>
+      <div class="feat reveal" style="display:flex;flex-direction:column;justify-content:center;background:var(--beige);border-color:var(--beige-2);">
+        <p class="founder-quote" style="font-size:24px;margin:0 0 18px;">Medical-grade results.<br>A sanctuary experience.</p>
+        <a class="textlink" href="#treatments">Explore our signature treatments &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ 6. STEPS TO SUCCESS ░░ -->
+<section data-od-id="steps">
+  <div class="wrap">
+    <div class="center reveal" style="max-width:60ch;margin-inline:auto;">
+      <p class="eyebrow">How It Works</p>
+      <h2>Your Path to Radiant, Confident Results</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><span class="num">1</span><h3>Book Your Complimentary Consultation</h3><p>Reserve your consultation — complimentary, no-pressure, and entirely focused on understanding your goals. Our expert providers take time to listen, assess your skin and facial structure, and answer every question.</p></div>
+      <div class="step reveal"><span class="num">2</span><h3>Receive Your Personalized Ritual Plan</h3><p>Your provider curates a treatment plan tailored specifically to you. You'll know exactly what's recommended, why it's right for your goals, what to expect, and how to sequence treatments for the best long-term results.</p></div>
+      <div class="step reveal"><span class="num">3</span><h3>Experience the Alexis Lauren Difference</h3><p>Your treatments take place in our beautifully designed medspa environment — calm, private, and intentionally luxurious. Every session is an experience in elevated self-care, not a clinical appointment.</p></div>
+      <div class="step reveal"><span class="num">4</span><h3>Maintain Your Results With The Vault</h3><p>Beautiful skin is built over time. The Vault membership makes it easy to stay consistent — with monthly beauty credits, member pricing, and exclusive perks that turn self-care into a sustainable lifestyle ritual.</p></div>
+    </div>
+    <div class="steps-media reveal">
+      <img src="assets/founder.jpg" alt="Expert provider at Alexis Lauren" loading="lazy" />
+      <img src="assets/clinic-shelf.png" alt="Alexis Lauren product shelf" loading="lazy" />
+      <img src="assets/clinic-hallway.png" alt="Warm Alexis Lauren hallway" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- ░░ 7. SERVICE SHOWCASE ░░ -->
+<section class="bg-cream" id="treatments" data-od-id="treatments">
+  <div class="wrap">
+    <div class="center reveal" style="max-width:64ch;margin-inline:auto;">
+      <p class="eyebrow">Our Signature Treatments</p>
+      <h2>Every Treatment, Curated Around You</h2>
+      <p class="lead" style="margin-top:16px;">Every treatment at Alexis Lauren is available as a standalone service or as part of your personalized ritual plan.</p>
+    </div>
+    <div class="serv-grid">
+      <article class="serv reveal"><div class="ph"><img src="assets/result-1.jpg" alt="Botox and Dysport results" loading="lazy"></div><div class="body"><h3>Injectables — Botox &amp; Dysport</h3><p>Expertly placed neuromodulators that soften expression lines for a naturally refreshed, rested look — never frozen. Our injectors take a conservative, layered approach because subtle is always more elegant.</p></div></article>
+      <article class="serv reveal"><div class="ph"><img src="assets/result-2.jpg" alt="Dermal filler facial balancing" loading="lazy"></div><div class="body"><h3>Dermal Fillers</h3><p>Thoughtful volume restoration and facial balancing using premium fillers. We focus on proportion, harmony, and results that look completely natural to those who know your face.</p></div></article>
+      <article class="serv reveal"><div class="ph"><img src="assets/facial-treatment.png" alt="Custom facial treatment" loading="lazy"></div><div class="body"><h3>Custom Facials — incl. Biologique Recherche</h3><p>Medical-grade facials designed around your skin's current condition and goals — congestion, texture, dullness, or sensitivity. This is skincare elevated to an art form.</p></div></article>
+      <article class="serv reveal"><div class="ph"><img src="assets/result-3.jpg" alt="Microneedling and PRP outcome" loading="lazy"></div><div class="body"><h3>Microneedling &amp; PRP</h3><p>Collagen-stimulating treatments that improve skin texture, tone, and firmness over time. PRP uses your own growth factors to accelerate results naturally. Ideal for long-term skin health.</p></div></article>
+      <article class="serv reveal"><div class="ph"><img src="assets/clinic-calm.png" alt="Sculptra treatment room" loading="lazy"></div><div class="body"><h3>Sculptra</h3><p>A biostimulator that gradually restores lost volume and triggers natural collagen production — delivering results that improve for months after treatment and can last two years or more.</p></div></article>
+      <article class="serv reveal"><div class="ph"><img src="assets/clinic-blush.png" alt="Chemical peel treatment" loading="lazy"></div><div class="body"><h3>Chemical Peels</h3><p>Clinically formulated peels that resurface the skin, target pigmentation, and reveal a brighter, clearer, more refined complexion. We match peel depth and formula to your skin type and goals.</p></div></article>
+      <article class="serv reveal"><div class="ph"><img src="assets/clinic-hallway.png" alt="Laser treatment suite" loading="lazy"></div><div class="body"><h3>Laser Treatments</h3><p>Advanced laser technology for skin rejuvenation, pigmentation correction, and overall tone improvement — calibrated to your skin's needs and administered by trained specialists.</p></div></article>
+      <article class="serv reveal"><div class="ph"><img src="assets/clinic-shelf.png" alt="Laser hair removal suite" loading="lazy"></div><div class="body"><h3>Laser Hair Removal</h3><p>Permanent hair reduction in a comfortable, private setting. Medical-grade laser technology delivering precise results with minimal downtime.</p></div></article>
+    </div>
+    <div class="center mt-cta reveal">
+      <a class="btn btn-primary" href="#book">Explore All Treatments &amp; Book Your Consultation <span class="arw">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ 8. IS THIS FOR ME ░░ -->
+<section data-od-id="is-this-for-me">
+  <div class="wrap">
+    <div class="split">
+      <div class="reveal">
+        <p class="eyebrow">Is This For You?</p>
+        <h2>Is Alexis Lauren Right for You?</h2>
+        <p class="lead" style="margin-top:16px;">You might be in exactly the right place if any of these sound familiar:</p>
+        <ul class="checklist">
+          <li><span class="mk">&#10022;</span><span>You've been thinking about aesthetics for a while — but you're not sure which treatments are actually right for you. You want expert guidance, not a menu to navigate alone.</span></li>
+          <li><span class="mk">&#10022;</span><span>You've seen results on other people that look too dramatic or obviously &ldquo;done&rdquo; — and that's the last thing you want. Natural-looking enhancement that preserves your character is non-negotiable for you.</span></li>
+          <li><span class="mk">&#10022;</span><span>You've been to other medspas and left feeling rushed, oversold, or underwhelmed. You want to be cared for — not processed — and you believe the experience matters as much as the result.</span></li>
+          <li><span class="mk">&#10022;</span><span>You want to make skincare and aesthetics a consistent part of your routine — not a sporadic, occasional investment. You're ready to approach self-care with intention.</span></li>
+          <li><span class="mk">&#10022;</span><span>You're preparing for something — an event, a season, a chapter — and you want to feel like the most refined, confident version of yourself when you walk in the room.</span></li>
+        </ul>
+        <p style="margin-top:30px;font-family:var(--font-display);font-style:italic;font-size:22px;color:var(--espresso);">If you recognized yourself in even one of these, we'd love to meet you.</p>
+        <div class="mt-cta"><a class="btn btn-primary" href="#book">Book My Complimentary Consultation <span class="arw">&rarr;</span></a></div>
+      </div>
+      <div class="media tall reveal">
+        <img src="assets/founder.jpg" alt="A warm, personal welcome at Alexis Lauren" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ 9. TESTIMONIALS ░░ -->
+<section class="bg-blush" data-od-id="testimonials">
+  <div class="wrap">
+    <div class="center reveal" style="max-width:60ch;margin-inline:auto;">
+      <p class="eyebrow">Social Proof</p>
+      <h2>What Our Clients Are Saying</h2>
+      <p class="rating-agg" style="margin-top:18px;">&#9733;&#9733;&#9733;&#9733;&#9733; &nbsp; Rated 5 / 5 by our clients on Google <span style="opacity:.7">(rating pending data collection)</span></p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi reveal"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="quote">&ldquo;I've been to several medspas in Miami and nothing compares to the Alexis Lauren experience. From the moment I walked in, I felt genuinely cared for. My injector took real time to understand what I wanted, and my results look so natural — I've had three people ask me if I've been on vacation. That's exactly what I was hoping for.&rdquo;</p><p class="who">Sofia M., Miami, FL · Botox &amp; Filler Client</p></div>
+      <div class="testi reveal"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="quote">&ldquo;I was terrified of looking overdone. I almost didn't book because I'd convinced myself injectables just weren't for me. The consultation completely changed my perspective. They explained everything, never pressured me, and the results were so subtle and perfect. I can't believe I waited this long.&rdquo;</p><p class="who">Camille R., Coral Gables, FL · First-Time Botox Client</p></div>
+      <div class="testi reveal"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="quote">&ldquo;I joined The Vault after my second visit and it's genuinely one of the best decisions I've made for my self-care routine. The credits make it easy to stay consistent, and member pricing means I'm actually getting more for my investment. I come in every month now and my skin has never looked better.&rdquo;</p><p class="who">Natalia V., Brickell, FL · Vault Member, Facials &amp; Laser</p></div>
+      <div class="testi reveal"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="quote">&ldquo;I've recommended Alexis Lauren to every woman in my circle. The space is stunning, the staff are warm and professional, and my results — three rounds of microneedling and PRP — have genuinely transformed my skin texture. I feel completely at home here.&rdquo;</p><p class="who">Michelle T., Miami Beach, FL · Microneedling &amp; PRP Client</p></div>
+      <div class="testi reveal" style="grid-column:1/-1;"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="quote">&ldquo;What I appreciate most is the honesty. They told me what I actually needed and what could wait. In an industry where upselling is rampant, that level of integrity is rare — and it's exactly why I keep coming back.&rdquo;</p><p class="who">Alexandra B., South Miami, FL · Ongoing Treatment Client</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ 10. BEFORE & AFTER GALLERY ░░ -->
+<section data-od-id="gallery">
+  <div class="wrap">
+    <div class="center reveal" style="max-width:62ch;margin-inline:auto;">
+      <p class="eyebrow">Featured Results</p>
+      <h2>Natural Results. Refined Outcomes.</h2>
+      <p class="lead" style="margin-top:16px;">Our results gallery speaks to our philosophy: every outcome is designed to look quietly, unmistakably better — not dramatically different.</p>
+    </div>
+    <div class="gallery">
+      <div class="ba reveal"><div class="img"><img src="assets/result-1.jpg" alt="Botox result, forehead and glabella" loading="lazy"></div><div class="meta"><div class="t">Botox Results</div><div class="d">Botox for forehead and glabella lines · 1 treatment session · Results shown at 14 days</div></div></div>
+      <div class="ba reveal"><div class="img"><img src="assets/result-2.jpg" alt="Facial rejuvenation result" loading="lazy"></div><div class="meta"><div class="t">Facial Rejuvenation</div><div class="d">Biologique Recherche custom facial series · 4 sessions over 2 months · Results shown at 60 days</div></div></div>
+      <div class="ba reveal"><div class="img"><img src="assets/result-3.jpg" alt="Sculptra volume restoration result" loading="lazy"></div><div class="meta"><div class="t">Sculptra Volume Restoration</div><div class="d">Sculptra biostimulator · 2 treatment sessions · Results shown at 6 months</div></div></div>
+    </div>
+    <p class="disclaimer reveal">Results vary by individual. All outcomes are personal and influenced by skin type, lifestyle, and treatment adherence. We will always set realistic, honest expectations during your consultation.</p>
+  </div>
+</section>
+
+<!-- ░░ 11. THE VAULT MEMBERSHIP ░░ -->
+<section class="vault" id="vault" data-od-id="vault">
+  <div class="wrap">
+    <div class="center reveal" style="max-width:64ch;margin-inline:auto;">
+      <p class="eyebrow">Membership</p>
+      <h2>Introducing The Vault.</h2>
+      <p class="sub">The smarter way to make luxury self-care a consistent part of your life.</p>
+    </div>
+    <div class="reveal" style="max-width:760px;margin:38px auto 0;text-align:center;">
+      <p>The most common thing we hear from clients who have been seeing us for a while?</p>
+      <p class="wish">&ldquo;I wish I had joined sooner.&rdquo;</p>
+      <p>The Vault is Alexis Lauren's exclusive membership program — designed for clients ready to make aesthetics and skincare a regular ritual rather than an occasional investment. Think of it as a personal beauty fund. Every month, your membership contributes credits that can be applied toward any of our treatments or medical-grade skincare products — while unlocking member pricing, exclusive perks, and priority booking access.</p>
+    </div>
+
+    <div class="vault-perks">
+      <div class="perk reveal"><div class="mk">&#10022;</div><h3>Monthly Beauty Credits</h3><p>Pre-funded credits applied directly toward treatments, products, or service packages of your choosing.</p></div>
+      <div class="perk reveal"><div class="mk">&#10022;</div><h3>Member Pricing</h3><p>Exclusive rates on Botox/Dysport, fillers, facials, laser, microneedling, PRP, Sculptra, chemical peels, and skincare.</p></div>
+      <div class="perk reveal"><div class="mk">&#10022;</div><h3>Priority Scheduling</h3><p>Members have first access to our most coveted appointment times.</p></div>
+      <div class="perk reveal"><div class="mk">&#10022;</div><h3>Birthday Glow Perk</h3><p>A complimentary birthday treatment — a light peel or facial enhancement — to celebrate the way you deserve.</p></div>
+      <div class="perk reveal"><div class="mk">&#10022;</div><h3>Referral Rewards</h3><p>Share your experience and earn bonus credits when your referrals join.</p></div>
+      <div class="perk reveal"><div class="mk">&#10022;</div><h3>VIP Event Access</h3><p>Exclusive invitations to Alexis Lauren member events, launches, and educational evenings.</p></div>
+    </div>
+
+    <div class="vault-math reveal">
+      <div class="h">The Vault Math</div>
+      <p>A non-member investing in a regular facial, Botox, and a skincare product pays retail pricing every visit. A Vault member investing the same monthly amount unlocks member pricing, accumulates credits that flex across services, and builds a beauty ritual that actually compounds over time.</p>
+      <p style="margin-bottom:0;color:var(--beige);font-family:var(--font-display);font-style:italic;font-size:21px;">Over 12 months, most members find their Vault membership pays for itself — and then some.</p>
+    </div>
+
+    <div class="center reveal" style="max-width:60ch;margin-inline:auto;">
+      <p>The Vault isn't a discount program. It's a commitment to yourself — and a smarter, more intentional way to invest in your appearance.</p>
+      <div class="mt-cta" style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <a class="btn btn-light" href="#book">Join The Vault &amp; Start My Ritual <span class="arw">&rarr;</span></a>
+        <span style="font-size:14px;color:rgba(251,248,244,.7);">Or ask about The Vault during your consultation — we'll walk you through which membership tier fits your goals.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ 12. MEET THE TEAM / ABOUT ░░ -->
+<section id="about" data-od-id="about">
+  <div class="wrap">
+    <div class="split">
+      <div class="media tall reveal">
+        <img src="assets/founder.jpg" alt="Expert provider at Alexis Lauren" loading="lazy" />
+      </div>
+      <div class="reveal">
+        <p class="eyebrow">Meet Your Providers</p>
+        <h2>Meet Your Expert Providers</h2>
+        <p style="margin-top:18px;">We believe the relationship between a client and their aesthetic provider is one of the most personal in self-care.</p>
+        <p>That's why we've built a team of expert, certified providers who don't just excel at their craft — they genuinely believe in the philosophy of natural-looking results, personalized care, and honest guidance.</p>
+        <p>You'll never be handed off to someone you haven't met. You'll always know who is treating you and why your plan looks the way it does.</p>
+      </div>
+    </div>
+
+    <div class="split reverse" style="margin-top:clamp(40px,6vw,72px);">
+      <div class="media wide reveal">
+        <img src="assets/moodboard.jpg" alt="The Alexis Lauren brand world" loading="lazy" />
+      </div>
+      <div class="reveal">
+        <p class="eyebrow">Our Story</p>
+        <h3 style="font-size:clamp(24px,3vw,34px);color:var(--espresso);">The Vision Behind Alexis Lauren</h3>
+        <p style="margin-top:16px;">Alexis Lauren was founded on a belief that the luxury medspa experience in South Florida — and beyond — deserved to be reimagined. Not just better treatments. A better experience entirely.</p>
+        <p>One where clients are guided, not sold to. Where the environment is as intentional as the results. Where self-care feels like what it's meant to feel like — elevated, personal, and genuinely restorative.</p>
+        <p>That vision shapes everything at Alexis Lauren — from the way we designed the space, to the way we train our providers, to the way we follow up after your treatment.</p>
+        <p class="founder-quote" style="margin-top:18px;">We're building something different here. And we're grateful you found us.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ 13. NOT FOR YOU IF ░░ -->
+<section class="bg-cream" data-od-id="not-for-you">
+  <div class="wrap">
+    <div class="split">
+      <div class="media tall reveal">
+        <img src="assets/clinic-calm.png" alt="Calm, premium Alexis Lauren interior" loading="lazy" />
+      </div>
+      <div class="reveal">
+        <p class="eyebrow">In Full Transparency</p>
+        <h2>This May Not Be Right For You</h2>
+        <p style="margin-top:16px;">We respect your time, so we want to be honest. Alexis Lauren may not be the right fit if:</p>
+        <ul class="notfor">
+          <li><span class="mk">&times;</span><span><b>You're primarily looking for the lowest-priced option.</b> We are not the cheapest medspa in Miami, and we don't try to be. Our pricing reflects our providers' expertise, the quality of our treatments, and the experience we've built around your visit. If price is the primary decision factor, we'd rather guide you toward a setting that fits your needs.</span></li>
+          <li><span class="mk">&times;</span><span><b>You want dramatic, obvious results.</b> Our philosophy is rooted in refinement and subtlety. If you're seeking a dramatic transformation rather than natural enhancement, our aesthetic approach may not align with your expectations.</span></li>
+          <li><span class="mk">&times;</span><span><b>You're not ready to be guided.</b> Our consultation process works because our clients trust our expertise. If you're not open to an honest assessment and professional recommendation, the experience won't serve you well.</span></li>
+          <li><span class="mk">&times;</span><span><b>You're looking for a quick, transactional visit.</b> We invest time in understanding your goals, explaining your options, and planning your care. That's not something we're willing to rush.</span></li>
+        </ul>
+        <p style="margin-top:26px;font-family:var(--font-display);font-style:italic;font-size:21px;color:var(--espresso);">If none of those describe you — and we have a feeling they don't — we'd love to welcome you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ 14. FAQ ░░ -->
+<section id="faq" data-od-id="faq">
+  <div class="wrap">
+    <div class="split" style="align-items:start;">
+      <div class="reveal" style="position:sticky;top:110px;">
+        <p class="eyebrow">FAQ</p>
+        <h2>Questions We're Happy to Answer</h2>
+        <div class="media wide" style="margin-top:26px;">
+          <img src="assets/clinic-shelf.png" alt="Alexis Lauren product shelf" loading="lazy" />
+        </div>
+      </div>
+      <div class="faq-group reveal">
+        <p class="faq-cat">On Results</p>
+        <details class="faq" open><summary>Will I look natural, or will people be able to tell I've had work done? <span class="pl">+</span></summary><div class="ans">Natural results are not just our goal — they are our standard. Our providers take a conservative, layered approach to every injectable treatment. We focus on subtle refinement: softening lines without eliminating expression, restoring volume without changing proportion, enhancing features without erasing character. Our clients routinely tell us the most common comment they receive is &ldquo;you look incredible — did you change your hair?&rdquo; That's exactly what we're aiming for.</div></details>
+        <details class="faq"><summary>How quickly will I see results? <span class="pl">+</span></summary><div class="ans">This depends on the treatment. Botox and Dysport typically show results within 7–14 days. Dermal fillers provide immediate volume with final results visible once any minor swelling subsides. Facials, peels, and laser treatments often show progressive improvement over days to weeks. Sculptra and PRP deliver results that build over months. During your consultation, we'll give you a realistic timeline specific to your treatment plan.</div></details>
+        <details class="faq"><summary>What if I'm not happy with my results? <span class="pl">+</span></summary><div class="ans">We set honest, realistic expectations during your consultation — and we follow up after every treatment. If something doesn't look the way we planned, we will work with you directly to address it. Our conservative approach is designed specifically to reduce the risk of outcomes that need correction.</div></details>
+
+        <p class="faq-cat">On Treatments</p>
+        <details class="faq"><summary>I don't know which treatments I need. Where do I start? <span class="pl">+</span></summary><div class="ans">This is the most common thing our new clients tell us — and it's exactly why the consultation exists. Come in, share your goals, and let our providers guide you. You don't need to arrive with a treatment in mind. We'll build the plan together.</div></details>
+        <details class="faq"><summary>Do the injectable treatments hurt? <span class="pl">+</span></summary><div class="ans">Most clients describe injectable treatments as mildly uncomfortable — not painful. We use fine needles, topical numbing where appropriate, and techniques designed to minimize discomfort. Most clients are surprised by how manageable the experience is.</div></details>
+        <details class="faq"><summary>Is there downtime after my treatments? <span class="pl">+</span></summary><div class="ans">This varies by treatment type. Botox and Dysport have virtually no downtime — most clients return to normal activity the same day. Fillers may cause minor swelling or bruising for a few days. Laser treatments and deeper peels may require 3–7 days of recovery depending on the type and depth. We'll discuss downtime in detail during your consultation so you can plan accordingly.</div></details>
+
+        <p class="faq-cat">On The Vault Membership</p>
+        <details class="faq"><summary>What exactly is The Vault and how does it work? <span class="pl">+</span></summary><div class="ans">The Vault is our monthly membership program that helps you make aesthetic treatments and skincare a consistent part of your lifestyle. Members contribute monthly credits that can be applied toward any of our services or medical-grade skincare products — while enjoying member pricing, priority scheduling, exclusive perks, and seasonal benefits. Think of it as a personal beauty fund that grows with your commitment.</div></details>
+        <details class="faq"><summary>Can I cancel The Vault membership if my circumstances change? <span class="pl">+</span></summary><div class="ans">We understand that life changes. Our membership program is designed with flexibility in mind. Please ask about our current cancellation, pause, and credit rollover policies during your consultation or membership enrollment — we're committed to making this feel like a benefit, not an obligation.</div></details>
+        <details class="faq"><summary>When is the best time to join The Vault? <span class="pl">+</span></summary><div class="ans">The sooner you join, the sooner you begin accumulating credits and accessing member pricing. Many clients join after their first or second visit once they've experienced the Alexis Lauren difference. Others join same-day during their initial consultation. Your provider can walk you through the membership options and help you decide what fits your goals.</div></details>
+
+        <p class="faq-cat">On Your First Visit</p>
+        <details class="faq"><summary>What happens during the complimentary consultation? <span class="pl">+</span></summary><div class="ans">Your consultation is a relaxed, unhurried conversation. You'll meet with one of our expert providers who will ask about your goals, concerns, and any previous aesthetic experience. They'll assess your skin, facial structure, and the areas you're interested in treating — and share their honest recommendations. There is no pressure to book or purchase anything during your consultation. It's simply a chance to get clarity and get to know us.</div></details>
+        <details class="faq"><summary>How do I know Alexis Lauren is right for me before I come in? <span class="pl">+</span></summary><div class="ans">We invite you to take our 3-minute Ritual Quiz — a brief questionnaire that helps us understand your goals, concerns, and ideal treatment direction. You'll receive a personalized result immediately, and you can use that as a starting point for your consultation conversation. It's a simple, no-commitment way to get a sense of what's possible for you.</div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ 15. FINAL SOCIAL PROOF REINFORCEMENT ░░ -->
+<section class="bg-blush" data-od-id="final-proof">
+  <div class="wrap center">
+    <div class="reveal" style="max-width:62ch;margin-inline:auto;">
+      <p class="eyebrow">Trusted Locally</p>
+      <h2>Trusted by Miami's Most Discerning Beauty Community</h2>
+    </div>
+    <div class="press reveal">
+      <span class="badge">As Featured In</span>
+      <span class="badge">&#9733; 5.0 Google Reviews</span>
+      <span class="badge">Coral Gables Favorite</span>
+      <span class="badge">Biologique Recherche Partner</span>
+    </div>
+    <div class="ig-strip reveal">
+      <img src="assets/moodboard.jpg" alt="Alexis Lauren brand moment" loading="lazy">
+      <img src="assets/result-1.jpg" alt="Client result" loading="lazy">
+      <img src="assets/result-2.jpg" alt="Client result" loading="lazy">
+      <img src="assets/result-3.jpg" alt="Client result" loading="lazy">
+      <img src="assets/clinic-blush.png" alt="Alexis Lauren interior" loading="lazy">
+    </div>
+    <p class="reveal" style="margin-top:22px;font-size:14px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;">Follow our community <a class="textlink" href="#">@alexislauren</a></p>
+  </div>
+</section>
+
+<!-- ░░ 16. FINAL CTA ░░ -->
+<section class="finalcta" id="book" data-od-id="final-cta">
+  <div class="wrap-narrow reveal">
+    <p class="eyebrow" style="color:var(--beige);">Your Invitation</p>
+    <h2>Will You Take the First Step Toward the Most Refined Version of Yourself?</h2>
+    <p class="lead">The consultation is complimentary. The guidance is expert. The experience is unlike anything you've found before. Whether you're exploring aesthetics for the first time or looking for a practice that finally aligns with your standards — we are ready to welcome you.</p>
+    <p class="ritual">Your ritual begins with one conversation.</p>
+    <div class="ctas">
+      <a class="btn btn-light" href="tel:+13056863393">Book My Complimentary Consultation <span class="arw">&rarr;</span></a>
+      <span class="note">No pressure. No obligation. Just clarity, care, and the beginning of your Alexis Lauren ritual.</span>
+      <a class="btn btn-outline-light" href="#book" style="margin-top:10px;">Take the 3-Minute Ritual Quiz First <span class="arw">&rarr;</span></a>
+      <span class="note">Not sure where to start? Let us curate a personalized treatment direction for you — in minutes.</span>
+      <a class="textlink tertiary" href="#vault" style="color:var(--beige);border-color:var(--beige);">Learn more about The Vault Membership &rarr;</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ░░ FOOTER ░░ -->
+<footer data-od-id="footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand">
+          <img src="assets/logo.avif" alt="Alexis Lauren logo" />
+        </div>
+        <p class="tag">Luxury Medspa &amp; Beauty Collective — Miami, South Florida. Refine. Don't replace.</p>
+        <a class="btn btn-light" href="tel:+13056863393" style="margin-top:8px;">Book My Complimentary Consultation</a>
+      </div>
+      <div class="foot-contact">
+        <span class="lbl">Location</span>
+        <a href="#">Coral Gables, Miami, FL</a>
+        <span class="lbl" style="margin-top:14px;">Phone</span>
+        <a href="tel:+13056863393">(305) 686-3393</a>
+        <span class="lbl" style="margin-top:14px;">Email</span>
+        <a href="mailto:hello@alexislauren.com">hello@alexislauren.com</a>
+        <span class="lbl" style="margin-top:14px;">Instagram</span>
+        <a href="#">@alexislauren</a>
+      </div>
+      <nav class="foot-contact" aria-label="Footer">
+        <span class="lbl">Explore</span>
+        <a href="#philosophy">Philosophy</a><br>
+        <a href="#treatments">Treatments</a><br>
+        <a href="#vault">The Vault</a><br>
+        <a href="#about">About</a><br>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+    <div class="foot-divider"></div>
+    <div class="foot-bot">
+      <span>&#10022; Alexis Lauren &#10022; &nbsp; © 2026 Alexis Lauren Beauty Collective. All rights reserved.</span>
+      <span>Results vary by individual. Treatments performed by certified providers.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  var nav = document.getElementById('nav');
+  var menuBtn = document.getElementById('menuBtn');
+  menuBtn && menuBtn.addEventListener('click', function(){ nav.classList.toggle('open'); });
+  document.querySelectorAll('.nav-links a, .nav-cta').forEach(function(a){
+    a.addEventListener('click', function(){ nav.classList.remove('open'); });
+  });
+
+  // Subtle fade-in on scroll
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold:0.12, rootMargin:'0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  // Single-open FAQ accordion per group
+  document.querySelectorAll('.faq-group').forEach(function(group){
+    var items = group.querySelectorAll('.faq');
+    items.forEach(function(d){
+      d.addEventListener('toggle', function(){
+        if(d.open){ items.forEach(function(o){ if(o!==d) o.open=false; }); }
+      });
+    });
+  });
+</script>
+</body>
+</html>
